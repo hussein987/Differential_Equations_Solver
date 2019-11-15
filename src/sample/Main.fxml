@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="544.0" prefWidth="655.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <tabs>
+    <Tab text="graphs">
+      <content>
+          <AnchorPane prefHeight="563.0" prefWidth="655.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <children>
+                  <LineChart fx:id="function" createSymbols="true">
+                      <xAxis>
+                          <NumberAxis autoRanging="true" lowerBound="0" side="BOTTOM" tickUnit="0.1" upperBound="1" />
+                      </xAxis>
+                      <yAxis>
+                          <NumberAxis autoRanging="true" lowerBound="0" side="LEFT" tickUnit="0.1" upperBound="1" />
+                      </yAxis>
+                      <cursor>
+                          <Cursor fx:constant="CROSSHAIR" />
+                      </cursor>
+                  </LineChart>
+                  <Button layoutX="495.0" layoutY="47.0" mnemonicParsing="false" onAction="#LoadChart" prefHeight="41.0" prefWidth="120.0" text="exact solution" />
+                  <TextField layoutX="23.0" layoutY="412.0" prefHeight="40.0" prefWidth="64.0" promptText="x0" fx:id="x0Field" />
+                  <TextField fx:id="y0Field" layoutX="96.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="y0" />
+                  <TextField fx:id="XField" layoutX="171.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="X" />
+                  <TextField fx:id="NField" layoutX="243.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="N" />
+                  <Button layoutX="500.0" layoutY="160.0" mnemonicParsing="false" onAction="#ImprovedEuler" prefHeight="40.0" prefWidth="109.0" text="Improved Euler" />
+                  <Button layoutX="500.0" layoutY="213.0" mnemonicParsing="false" onAction="#RungeKutta" prefHeight="40.0" prefWidth="109.0" text="Runge Kutta" />
+                  <Button layoutX="511.0" layoutY="411.0" mnemonicParsing="false" onAction="#Clear" prefHeight="46.0" prefWidth="87.0" text="Clear" />
+                  <Button layoutX="502.0" layoutY="108.0" mnemonicParsing="false" onAction="#Euler" prefHeight="36.0" prefWidth="106.0" text="Euler" />
+              </children>
+          </AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Local Errors">
+      <content>
+          <AnchorPane prefHeight="563.0" prefWidth="655.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+          <children>
+              <LineChart fx:id="function1" createSymbols="true">
+                  <xAxis>
+                      <NumberAxis autoRanging="true" lowerBound="0" side="BOTTOM" tickUnit="0.1" upperBound="1" />
+                  </xAxis>
+                  <yAxis>
+                      <NumberAxis autoRanging="true" lowerBound="0" side="LEFT" tickUnit="0.1" upperBound="1" />
+                  </yAxis>
+                  <cursor>
+                      <Cursor fx:constant="CROSSHAIR" />
+                  </cursor>
+              </LineChart>
+              <TextField layoutX="23.0" layoutY="412.0" prefHeight="40.0" prefWidth="64.0" promptText="x0" fx:id="x0Field1" />
+              <TextField fx:id="y0Field1" layoutX="96.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="y0" />
+              <TextField fx:id="XField1" layoutX="171.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="X" />
+              <TextField fx:id="NField1" layoutX="243.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="N" />
+              <Button layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#eulerError" prefHeight="40.0" prefWidth="109.0" text="Euler method" />
+              <Button layoutX="500.0" layoutY="88.0" mnemonicParsing="false" onAction="#improvedEulerError" prefHeight="40.0" prefWidth="109.0" text="Improved Euler" />
+              <Button layoutX="500.0" layoutY="144.0" mnemonicParsing="false" onAction="#rungeKuttaError" prefHeight="40.0" prefWidth="109.0" text="Runge Kutta" />
+              <Button layoutX="511.0" layoutY="411.0" mnemonicParsing="false" onAction="#ClearError" prefHeight="46.0" prefWidth="87.0" text="Clear" />          </children>
+      </AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Total Errors">
+        <content>
+            <AnchorPane prefHeight="563.0" prefWidth="655.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <LineChart fx:id="function2" createSymbols="true">
+                    <xAxis>
+                        <NumberAxis autoRanging="true" lowerBound="0" side="BOTTOM" tickUnit="0.1" upperBound="1" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis autoRanging="true" lowerBound="0" side="LEFT" tickUnit="0.1" upperBound="1" />
+                    </yAxis>
+                    <cursor>
+                        <Cursor fx:constant="CROSSHAIR" />
+                    </cursor>
+                </LineChart>
+                <TextField layoutX="23.0" layoutY="412.0" prefHeight="40.0" prefWidth="64.0" promptText="x0" fx:id="x0Field2" />
+                <TextField fx:id="y0Field2" layoutX="96.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="y0" />
+                <TextField fx:id="XField2" layoutX="171.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="X" />
+                <TextField fx:id="NField2" layoutX="243.0" layoutY="413.0" prefHeight="40.0" prefWidth="64.0" promptText="N" />
+                <Button layoutX="511.0" layoutY="411.0" mnemonicParsing="false" onAction="#ClearErrorTotal" prefHeight="46.0" prefWidth="87.0" text="Clear" />
+                <Button layoutX="500.0" layoutY="33.0" mnemonicParsing="false" onAction="#eulerTotal" prefHeight="40.0" prefWidth="109.0" text="Euler method" />
+                <Button layoutX="500.0" layoutY="88.0" mnemonicParsing="false" onAction="#improvedEulerTotal" prefHeight="40.0" prefWidth="109.0" text="Improved Euler" />
+                <Button layoutX="500.0" layoutY="144.0" mnemonicParsing="false" onAction="#rungeKuttaTotal" prefHeight="40.0" prefWidth="109.0" text="Runge Kutta" />
+                <TextField fx:id="NfField" layoutX="520.0" layoutY="341.0" prefHeight="31.0" prefWidth="70.0" />
+                <TextField fx:id="N0Field" layoutX="520.0" layoutY="263.0" prefHeight="31.0" prefWidth="70.0" />
+                <Label layoutX="500.0" layoutY="242.0" text="starting value of N" />
+                <Label layoutX="494.0" layoutY="320.0" text="finishing value of N" />
+            </children>
+        </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
